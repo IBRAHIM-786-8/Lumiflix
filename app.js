@@ -1,4 +1,62 @@
 // LumiFlix - Main Application
+// Add this at the beginning of your constructor
+constructor() {
+    // Auto-detect backend URL (works on Vercel and local)
+    this.backendUrl = this.detectBackendUrl();
+    
+    // Rest of your existing constructor code...
+    // ... (keep all your existing code below)
+}
+
+// Add this new method
+detectBackendUrl() {
+    // Check if running on Vercel
+    if (window.location.hostname.includes('vercel.app')) {
+        // On Vercel, API is at the same domain with HTTPS
+        return '';
+    }
+    
+    // Local development
+    const hostname = window.location.hostname;
+    return `http://${hostname}:3005`;
+}
+
+// Replace your existing fetchWithBackend method
+async fetchWithBackend(endpoint) {
+    // On Vercel, use /api prefix, otherwise use full URL with port
+    const url = this.backendUrl 
+        ? `${this.backendUrl}${endpoint}`
+        : `/api${endpoint}`;
+    
+    try {
+        const response = await fetch(url);
+        return response;
+    } catch (error) {
+        console.error('Fetch error:', error);
+        throw error;
+    }
+}
+
+// Replace your checkBackendHealth method
+async checkBackendHealth() {
+    try {
+        const response = await this.fetchWithBackend('/health');
+        
+        if (response.ok) {
+            const data = await response.json();
+            console.log('Backend connected:', data);
+        } else {
+            console.warn('Backend not responding optimally');
+        }
+    } catch (error) {
+        console.warn('Backend not available - using TMDB only');
+        // Don't show error notification on Vercel
+        if (!window.location.hostname.includes('vercel.app')) {
+            this.showNotification('Backend connection failed. Make sure server.js is running on port 3005', 'warning');
+        }
+    }
+}
+
 class LumiFlix {
     constructor() {
         // Auto-detect backend URL
@@ -4402,4 +4460,5 @@ window.handleImageError = function(img, title) {
     fallback.className = 'crew-image-fallback';
     fallback.textContent = title ? title.charAt(0).toUpperCase() : '?';
     img.parentNode.replaceChild(fallback, img);
+
 };
