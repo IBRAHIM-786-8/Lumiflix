@@ -4075,7 +4075,10 @@ class LumiFlix {
             return { results: [] };
         }
         
-        const url = `${this.tmdbBase}${endpoint}${endpoint.includes('?') ? '&' : '?'}api_key=${this.tmdbApiKey}&page=${page}`;
+        // Fix: Properly construct URL without template literal issues
+        const baseUrl = 'https://api.themoviedb.org/3';
+        const separator = endpoint.includes('?') ? '&' : '?';
+        const url = baseUrl + endpoint + separator + 'api_key=' + this.tmdbApiKey + '&page=' + page;
         
         try {
             const response = await fetch(url);
