@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>LumiFlix · Privacy Policy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #080b14;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #e5ecfb;
+            line-height: 1.7;
+        }
+
+        .site-wrapper {
+            background: radial-gradient(ellipse at 30% 20%, #1b274d, #030614);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 3rem;
+            border-bottom: 1px solid rgba(100, 150, 255, 0.15);
+            backdrop-filter: blur(12px);
+            background: rgba(2, 5, 15, 0.7);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #ffffff, #b8d0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 3px;
+            text-shadow: 0 0 30px #3f6eff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #c6d6ff;
+            text-decoration: none;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            border-bottom-color: #5f8eff;
+            color: white;
+            text-shadow: 0 0 15px #5f8eff;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            flex: 1;
+        }
+
+        /* Privacy Header */
+        .privacy-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .privacy-header h1 {
+            font-size: 4rem;
+            font-weight: 500;
+            background: linear-gradient(145deg, #ffffff, #b8d0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .last-updated {
+            color: #90a9e6;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            font-weight: 300;
+        }
+
+        .glow-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #5f8eff, #b0c6ff, #5f8eff, transparent);
+            width: 200px;
+            margin: 1.5rem auto;
+            filter: blur(2px);
+        }
+
+        /* Privacy Card */
+        .privacy-card {
+            background: rgba(8, 14, 32, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid #2a3b70;
+            border-radius: 2.5rem;
+            padding: 3rem;
+            box-shadow: 0 0 60px #1f358055;
+        }
+
+        .privacy-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .privacy-section h2 {
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: white;
+            margin-bottom: 1.2rem;
+            border-left: 5px solid #5f8eff;
+            padding-left: 1.2rem;
+        }
+
+        .privacy-section p {
+            margin-bottom: 1rem;
+            color: #d0ddfa;
+            font-weight: 300;
+        }
+
+        .privacy-section ul {
+            margin: 1rem 0 1.5rem 2rem;
+            color: #b0c4f0;
+        }
+
+        .privacy-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-note {
+            background: rgba(15, 25, 45, 0.8);
+            border-left: 4px solid #5f8eff;
+            padding: 1.2rem;
+            border-radius: 1rem;
+            margin: 1.5rem 0;
+            color: #e0e9ff;
+        }
+
+        .footer-note {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(95, 142, 255, 0.2);
+            text-align: center;
+            color: #8fa3dd;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        .premium-footer {
+            margin-top: 4rem;
+            background: rgba(2, 5, 15, 0.9);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(95, 142, 255, 0.2);
+            padding: 3rem 3rem 1.5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-heading {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #5f8eff;
+            padding-left: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #b0c4f0;
+            text-decoration: none;
+            transition: 0.3s;
+            border-bottom: 1px solid transparent;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            border-bottom-color: #5f8eff;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(95, 142, 255, 0.15);
+            display: flex;
+            justify-content: space-between;
+            color: #7e92c0;
+        }
+
+        @media (max-width: 900px) {
+            .privacy-card { padding: 1.5rem; }
+            .footer-content { grid-template-columns: repeat(2, 1fr); }
+            .navbar { flex-direction: column; gap: 1rem; }
+        }
+
+        @media (max-width: 600px) {
+            .footer-content { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="site-wrapper">
+        <nav class="navbar">
+            <div class="logo">LUMIFLIX</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="privacy.html" class="active">Privacy</a></li>
+                <li><a href="terms.html">Terms</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+        </nav>
+
+        <main class="container">
+            <div class="privacy-header">
+                <h1>🔐 PRIVACY POLICY</h1>
+                <div class="last-updated">Last Updated: April 7, 2025</div>
+                <div class="glow-divider"></div>
+            </div>
+
+            <div class="privacy-card">
+                <p style="font-size: 1.1rem; margin-bottom: 2rem; color: #e0e9ff;">Welcome to LumiFlix. Your privacy is important to us, and this Privacy Policy explains how we handle information when you use our website and services.</p>
+                
+                <p style="margin-bottom: 2rem; color: #b0c4f0;">By accessing or using LumiFlix, you agree to the practices described in this policy.</p>
+
+                <div class="privacy-section">
+                    <h2>1. Information We Collect</h2>
+                    <p>LumiFlix is designed to provide a smooth and secure streaming experience. We may collect limited information to improve our services, including:</p>
+                    <ul>
+                        <li>Basic device information (browser type, device type, screen size)</li>
+                        <li>Usage data (pages visited, interactions, playback activity)</li>
+                        <li>Anonymous technical data for performance and analytics</li>
+                    </ul>
+                    <p>We do not require account registration to browse or stream content unless explicitly stated for specific features.</p>
+                </div>
+
+                <div class="privacy-section">
+                    <h2>2. How We Use Information</h2>
+                    <p>The information we collect is used strictly to:</p>
+                    <ul>
+                        <li>Improve website performance and stability</li>
+                        <li>Optimize streaming quality and compatibility</li>
+                        <li>Enhance user experience across devices</li>
+                        <li>Analyze traffic and feature usage</li>
+                    </ul>
+                    <div class="highlight-note">We do not sell, rent, or trade user data to third parties.</div>
+                </div>
+
+                <div class="privacy-section">
+                    <h2>3. Cookies & Local Storage</h2>
+                    <p>LumiFlix may use cookies or local storage technologies to:</p>
+                    <ul>
+                        <li>Remember user preferences</li>
+                        <li>Enable features such as wishlist or continue watching</li>
+                        <li>Improve loading speed and responsiveness</li>
+                    </ul>
+                    <p>You can control or disable cookies through your browser settings at any time.</p>
+                </div>
+
+                <div class="privacy-section">
+                    <h2>4. Third-Party Services</h2>
+                    <p>LumiFlix may display content metadata, ratings, or trailers sourced from third-party services.</p>
+                    <p>Please note:</p>
+                    <ul>
+                        <li>Third-party services may have their own privacy policies</li>
+                        <li>LumiFlix is not responsible for external websites or services linked from our platform</li>
+                        <li>We encourage users to review the privacy policies of any third-party services they interact with</li>
+                    </ul>
+                </div>
+
+                <div class="privacy-section">
+                    <h2>5. Data Security</h2>
+                    <p>We take reasonable technical and organizational measures to protect our platform against:</p>
+                    <ul>
+                        <li>Unauthorized access</li>
+                        <li>Data misuse</li>
+                        <li>Loss or alteration of information</li>
+                    </ul>
+                    <p>However, no internet-based system can be guaranteed 100% secure.</p>
+                </div>
+
+                <div class="privacy-section">
+                    <h2>6. Children's Privacy</h2>
+                    <p>LumiFlix is not intended for children under the age of 13.</p>
+                    <p>We do not knowingly collect personal information from children. If you believe such information has been collected, please contact us so we can take appropriate action.</p>
+                </div>
+
+                <div class="privacy-section">
+                    <h2>7. Changes to This Policy</h2>
+                    <p>We may update this Privacy Policy from time to time to reflect:</p>
+                    <ul>
+                        <li>Service improvements</li>
+                        <li>Legal or regulatory requirements</li>
+                        <li>Platform feature updates</li>
+                    </ul>
+                    <p>Any changes will be posted on this page with an updated revision date.</p>
+                </div>
+
+                <div class="privacy-section">
+                    <h2>8. Contact Us</h2>
+                    <p>If you have questions, concerns, or requests regarding this Privacy Policy, please contact us through our <a href="contact.html" style="color: #8aadff; text-decoration: none; border-bottom: 1px solid #5f8eff;">Contact Us page</a>.</p>
+                </div>
+
+                <div class="footer-note">
+                    © LumiFlix. All Rights Reserved.
+                </div>
+            </div>
+        </main>
+
+        <footer class="premium-footer">
+            <div class="footer-content">
+                <div>
+                    <h3 class="footer-heading">LUMIFLIX</h3>
+                    <p style="color: #b0c4f0;">Cinematic streaming experience</p>
+                </div>
+                <div>
+                    <h3 class="footer-heading">COMPANY</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer-heading">SUPPORT</h3>
+                    <ul class="footer-links">
+                        <li><a href="help.html">Help Center</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer-heading">CONNECT</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Facebook</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>© 2025 LumiFlix. All Rights Reserved.</div>
+                <div>Developed by Ibrahim Ahmed</div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

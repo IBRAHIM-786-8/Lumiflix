@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    
+    <!-- ========== SEO META TAGS (ONLY ADDITIONS, NO DESIGN CHANGE) ========== -->
+    <title>LumiFlix · Cinematic Streaming</title>
+    <meta name="description" content="LumiFlix offers premium streaming of movies, TV shows, and originals. Experience cinema-quality entertainment in stunning 4K HDR.">
+    <meta name="keywords" content="streaming, movies online, TV shows, 4K, HDR, LumiFlix, cinema, watch now">
+    <meta name="author" content="Ibrahim Ahmed">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.lumiflix.com/">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="LumiFlix · Cinematic Streaming">
+    <meta property="og:description" content="Stream unlimited movies and TV shows. Start your free trial today.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.lumiflix.com">
+    <meta property="og:image" content="https://www.lumiflix.com/og-poster.jpg">
+    <meta property="og:site_name" content="LumiFlix">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LumiFlix · Cinematic Streaming">
+    <meta name="twitter:description" content="Immerse yourself in cinema-quality streaming.">
+    <meta name="twitter:image" content="https://www.lumiflix.com/twitter-card.jpg">
+    
+    <!-- Favicon & theme (optional but good for brand) -->
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <meta name="theme-color" content="#02050f">
+    
+    <!-- Structured Data (JSON-LD) for rich snippets -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "LumiFlix",
+        "url": "https://www.lumiflix.com",
+        "logo": "https://www.lumiflix.com/logo.png",
+        "sameAs": [
+            "https://www.facebook.com/lumiflix",
+            "https://twitter.com/lumiflix",
+            "https://www.instagram.com/lumiflix"
+        ],
+        "description": "Cinematic streaming service for movies and TV shows."
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "LumiFlix",
+        "url": "https://www.lumiflix.com",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.lumiflix.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    
+    <!-- ========== ORIGINAL STYLES & LINKS (UNTOUCHED) ========== -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ADD THIS FOOTER STYLES TO YOUR EXISTING STYLES.CSS OR INLINE HERE */
+        .premium-footer {
+            margin-top: 4rem;
+            background: rgba(2, 5, 15, 0.9);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(95, 142, 255, 0.2);
+            padding: 3rem 3rem 1.5rem;
+            position: relative;
+            box-shadow: 0 -20px 40px -20px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(95, 142, 255, 0.1) inset;
+        }
+
+        .footer-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 3fr 2fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .footer-logo-section .logo {
+            font-size: 2rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #ffffff, #b8d0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            display: inline-block;
+            text-shadow: 0 0 30px #3f6eff;
+        }
+
+        .footer-tagline {
+            color: #9aafe0;
+            font-weight: 300;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-top: 0.5rem;
+        }
+
+        .footer-heading {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+            border-left: 4px solid #5f8eff;
+            padding-left: 1rem;
+            text-shadow: 0 0 15px #3f6eff;
+        }
+
+        .footer-links-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem 2rem;
+        }
+
+        .footer-link-item {
+            list-style: none;
+        }
+
+        .footer-link-item a {
+            color: #b0c4f0;
+            text-decoration: none;
+            font-weight: 300;
+            transition: all 0.3s ease;
+            display: inline-block;
+            padding: 0.3rem 0;
+            border-bottom: 1px solid transparent;
+        }
+
+        .footer-link-item a:hover {
+            color: white;
+            border-bottom-color: #5f8eff;
+            text-shadow: 0 0 15px #5f8eff;
+            transform: translateX(5px);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(20, 30, 60, 0.8);
+            border: 1px solid #3f5a9b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #b0c4f0;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+
+        .social-icon:hover {
+            background: #1f3170;
+            border-color: #5f8eff;
+            color: white;
+            box-shadow: 0 0 30px #5f8eff;
+            transform: translateY(-3px);
+        }
+
+        .footer-newsletter p {
+            color: #b0c4f0;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-input {
+            display: flex;
+            background: rgba(8, 14, 30, 0.8);
+            border: 1px solid #2f3f70;
+            border-radius: 3rem;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .newsletter-input:focus-within {
+            border-color: #5f8eff;
+            box-shadow: 0 0 0 3px #1e3166, 0 0 30px #5f8eff;
+        }
+
+        .newsletter-input input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            color: white;
+            outline: none;
+        }
+
+        .newsletter-input button {
+            background: #1f3170;
+            border: none;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+            border-left: 1px solid #3f5a9b;
+        }
+
+        .newsletter-input button:hover {
+            background: #2a3f8a;
+            box-shadow: 0 0 20px #5f8eff;
+        }
+
+        .footer-bottom {
+            max-width: 1300px;
+            margin: 2rem auto 0;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(95, 142, 255, 0.15);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            color: #7e92c0;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-bottom-links a {
+            color: #b0c4f0;
+            text-decoration: none;
+            transition: 0.2s;
+            border-bottom: 1px solid transparent;
+        }
+
+        .footer-bottom-links a:hover {
+            color: white;
+            border-bottom-color: #5f8eff;
+        }
+
+        .footer-glow {
+            position: absolute;
+            top: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #5f8eff, #b0c6ff, #5f8eff, transparent);
+            filter: blur(3px);
+        }
+
+        @media (max-width: 900px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        /* --- INTRO TEXT CENTER ALIGNMENT (PRESERVED AND ENSURED) --- */
+        .main-content > div:first-of-type {
+            text-align: center !important;
+            padding: 3rem !important;
+            color: #b0c4f0;
+        }
+        .main-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .main-content p {
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- Loading Overlay (initial) -->
+        <div class="app-loading" id="appLoading">
+            <div class="lumiflix-logo animate-pulse-glow">LUMIFLIX</div>
+     
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+
+        <!-- Main App (hidden until loaded) -->
+        <div class="app-container hidden" id="appContainer">
+            <!-- Navigation -->
+            <nav class="navbar">
+                <div class="nav-left">
+                    <div class="logo">LUMIFLIX</div>
+                    <ul class="nav-links">
+                        <li><a href="#/" class="active" data-nav="home">Home</a></li>
+                        <li><a href="#/movies" data-nav="movies">Movies</a></li>
+                        <li><a href="#/tv" data-nav="tv">TV Shows</a></li>
+                    </ul>
+                </div>
+                <div class="nav-right">
+                    <div class="search-container">
+                        <input type="text" placeholder="Search movies, shows..." class="search-input" id="searchInput">
+                        <svg class="search-icon" viewBox="0 0 24 24" width="20" height="20">
+                            <path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                        </svg>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Main Content Area -->
+            <main class="main-content" id="mainContent">
+                <!-- Dynamic content rendered here - INTRO CENTERED (no change) -->
+                <div style="padding: 3rem; text-align: center; color: #b0c4f0;">
+                    <h1 style="font-size: 3rem; margin-bottom: 1rem;">Welcome to LumiFlix</h1>
+                    <p style="font-size: 1.2rem;">Your cinematic streaming experience</p>
+                </div>
+            </main>
+
+            <!-- Custom Video Player (hidden initially) -->
+            <div class="video-player-overlay" id="videoPlayerOverlay">
+                <div class="video-container">
+                    <!-- Cinematic Loading Screen (shown during buffering) -->
+                    <div class="cinematic-loader" id="cinematicLoader">
+                        <div class="loader-backdrop" id="loaderBackdrop"></div>
+                        <div class="loader-content">
+                            <div class="lumiflix-logo loader-logo">LUMIFLIX</div>
+                            <div class="loader-bar-container">
+                                <div class="loader-bar"></div>
+                            </div>
+                            <div class="loader-text">Preparing your stream...</div>
+                        </div>
+                    </div>
+
+                    <!-- Video Element -->
+                    <video id="videoPlayer" class="custom-video-player"></video>
+
+                    <!-- Custom Controls -->
+                    <div class="video-controls" id="videoControls">
+                        <!-- Progress Bar -->
+                        <div class="progress-bar-container" id="progressBarContainer">
+                            <div class="progress-bar">
+                                <div class="progress-played" id="progressPlayed"></div>
+                                <div class="progress-buffered" id="progressBuffered"></div>
+                                <div class="progress-handle" id="progressHandle"></div>
+                            </div>
+                        </div>
+
+                        <div class="controls-main">
+                            <div class="controls-left">
+                                <button class="control-btn" id="playPauseBtn">
+                                    <svg viewBox="0 0 24 24" width="24" height="24" id="playIcon">
+                                        <path fill="currentColor" d="M8 5v14l11-7z"/>
+                                    </svg>
+                                    <svg viewBox="0 0 24 24" width="24" height="24" id="pauseIcon" class="hidden">
+                                        <path fill="currentColor" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                                    </svg>
+                                </button>
+                                <button class="control-btn" id="volumeBtn">
+                                    <svg viewBox="0 0 24 24" width="24" height="24" id="volumeHighIcon">
+                                        <path fill="currentColor" d="M3 9v6h4l5 5V4L7 9H3z"/>
+                                    </svg>
+                                </button>
+                                <div class="volume-slider-container" id="volumeSliderContainer">
+                                    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.01" value="1">
+                                </div>
+                                <span class="time-display" id="timeDisplay">0:00 / 0:00</span>
+                            </div>
+
+                            <div class="controls-right">
+                                <!-- Quality Selector -->
+                                <div class="dropdown-container" id="qualityDropdown">
+                                    <button class="control-btn dropdown-btn">
+                                        <span class="quality-text">HD</span>
+                                        <svg viewBox="0 0 24 24" width="16" height="16">
+                                            <path fill="currentColor" d="M7 10l5 5 5-5z"/>
+                                        </svg>
+                                    </button>
+                                    <div class="dropdown-menu" id="qualityMenu"></div>
+                                </div>
+
+                                <!-- Language Selector -->
+                                <div class="dropdown-container" id="languageDropdown">
+                                    <button class="control-btn dropdown-btn">
+                                        <span class="language-text">EN</span>
+                                        <svg viewBox="0 0 24 24" width="16" height="16">
+                                            <path fill="currentColor" d="M7 10l5 5 5-5z"/>
+                                        </svg>
+                                    </button>
+                                    <div class="dropdown-menu" id="languageMenu"></div>
+                                </div>
+
+                                <!-- Episode Navigation (for TV shows) -->
+                                <div class="episode-nav-container hidden" id="episodeNavContainer">
+                                    <button class="control-btn" id="prevEpisodeBtn" title="Previous Episode">
+                                        <svg viewBox="0 0 24 24" width="20" height="20">
+                                            <path fill="currentColor" d="M6 18V6h2v12H6zm10-6l-8 5V7l8 5z"/>
+                                        </svg>
+                                    </button>
+                                    <button class="control-btn" id="nextEpisodeBtn" title="Next Episode">
+                                        <svg viewBox="0 0 24 24" width="20" height="20">
+                                            <path fill="currentColor" d="M6 18l8-5-8-5v10zm12-12v12h-2V6h2z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <!-- Fullscreen -->
+                                <button class="control-btn" id="fullscreenBtn">
+                                    <svg viewBox="0 0 24 24" width="24" height="24" id="fullscreenIcon">
+                                        <path fill="currentColor" d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
+                                    </svg>
+                                </button>
+
+                                <!-- Close Player -->
+                                <button class="control-btn close-player" id="closePlayerBtn">
+                                    <svg viewBox="0 0 24 24" width="24" height="24">
+                                        <path fill="currentColor" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Premium Error Panel -->
+                    <div class="error-panel hidden" id="errorPanel">
+                        <div class="error-content">
+                            <svg class="error-icon" viewBox="0 0 24 24" width="48" height="48">
+                                <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                            </svg>
+                            <h2 class="error-title" id="errorTitle">Playback Unavailable</h2>
+                            <p class="error-message" id="errorMessage">Server not responding</p>
+                            <div class="error-actions">
+                                <button class="error-btn retry-btn" id="retryPlaybackBtn">Retry</button>
+                                <button class="error-btn back-btn" id="goBackBtn">Go Back</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BEAUTIFUL PREMIUM FOOTER (COMPLETELY UNCHANGED, COLORS SAME) -->
+            <footer class="premium-footer">
+                <div class="footer-glow"></div>
+                
+                <div class="footer-content">
+                    <!-- Logo & Tagline -->
+                    <div class="footer-logo-section">
+                        <div class="logo">LUMIFLIX</div>
+                        <p class="footer-tagline">Experience cinema like never before. Glow-infused streaming for the modern viewer.</p>
+                        <div style="margin-top: 1.5rem; display: flex; gap: 1rem;">
+                            <span class="social-icon">📱</span>
+                            <span class="social-icon">📘</span>
+                            <span class="social-icon">🐦</span>
+                            <span class="social-icon">📺</span>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links (4 pages + more) -->
+                    <div>
+                        <h3 class="footer-heading">EXPLORE</h3>
+                        <ul class="footer-links-grid" style="padding-left: 0;">
+                            <li class="footer-link-item"><a href="about.html">About Us</a></li>
+                            <li class="footer-link-item"><a href="privacy.html">Privacy Policy</a></li>
+                            <li class="footer-link-item"><a href="contact.html">Contact Us</a></li>
+                            <li class="footer-link-item"><a href="blog.html">Blog</a></li>
+                            <li class="footer-link-item"><a href="#/movies">Movies</a></li>
+                            <li class="footer-link-item"><a href="#/tv">TV Shows</a></li>
+                            <li class="footer-link-item"><a href="#/originals">Originals</a></li>
+                            <li class="footer-link-item"><a href="#/coming-soon">Coming Soon</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Support & Newsletter -->
+                    <div>
+                        <h3 class="footer-heading">STAY CONNECTED</h3>
+                        <div class="footer-newsletter">
+                            <p>Subscribe for cinematic updates</p>
+                            <div class="newsletter-input">
+                                <input type="email" placeholder="Your email">
+                                <button>→</button>
+                            </div>
+                        </div>
+                        <div style="margin-top: 2rem;">
+                            <h3 class="footer-heading" style="margin-bottom: 1rem;">SUPPORT</h3>
+                            <ul style="list-style: none; padding-left: 0;">
+                                <li class="footer-link-item"><a href="help.html">Help Center</a></li>
+                                <li class="footer-link-item"><a href="faq.html">FAQs</a></li>
+                                <li class="footer-link-item"><a href="terms.html">Terms of Service</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Bottom with Copyright -->
+                <div class="footer-bottom">
+                    <div>© 2025 LumiFlix. All Rights Reserved. Developed by Ibrahim Ahmed</div>
+                    <div class="footer-bottom-links">
+                        <a href="about.html">About</a>
+                        <a href="privacy.html">Privacy</a>
+                        <a href="contact.html">Contact</a>
+                        <a href="blog.html">Blog</a>
+                        <a href="#/sitemap">Sitemap</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Templates -->
+    <template id="movieCardTemplate">
+        <div class="movie-card">
+            <div class="card-poster">
+                <img src="" alt="" class="poster-img" loading="lazy">
+                <div class="card-overlay">
+                    <button class="watch-now-btn">Watch Now</button>
+                </div>
+                <div class="card-rating">
+                    <span class="rating-star">★</span>
+                    <span class="rating-value"></span>
+                </div>
+            </div>
+            <div class="card-info">
+                <h3 class="card-title"></h3>
+                <div class="card-meta">
+                    <span class="card-year"></span>
+                    <span class="card-type"></span>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="episodeItemTemplate">
+        <div class="episode-item" data-episode-index="">
+            <div class="episode-thumbnail">
+                <img src="" alt="" loading="lazy">
+                <div class="episode-play-overlay">
+                    <svg viewBox="0 0 24 24" width="32" height="32">
+                        <path fill="currentColor" d="M8 5v14l11-7z"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="episode-details">
+                <div class="episode-header">
+                    <span class="episode-number"></span>
+                    <span class="episode-runtime"></span>
+                </div>
+                <h4 class="episode-name"></h4>
+                <p class="episode-overview"></p>
+                <div class="episode-progress-bar">
+                    <div class="episode-progress-fill" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="app.js"></script>
+    <script>
+        // Simulate loading fade
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('appLoading').style.opacity = '0';
+                setTimeout(function() {
+                    document.getElementById('appLoading').classList.add('hidden');
+                    document.getElementById('appContainer').classList.remove('hidden');
+                }, 1000);
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

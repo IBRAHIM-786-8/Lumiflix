@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>LumiFlix · Help Center</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0c16;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #e5ecfb;
+            line-height: 1.6;
+        }
+
+        .help-wrapper {
+            background: radial-gradient(ellipse at 70% 30%, #1b274d 0%, #04071a 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* Cinematic glow overlay */
+        .help-wrapper::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 40%, rgba(70, 130, 255, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 2rem 1rem;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+        }
+
+        /* Header */
+        .help-header {
+            text-align: center;
+            margin: 2rem 0 3rem;
+        }
+
+        .help-header h1 {
+            font-size: clamp(2.5rem, 7vw, 4.2rem);
+            font-weight: 500;
+            background: linear-gradient(135deg, #ffffff, #c2d6ff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            animation: breatheGlow 4s infinite alternate;
+            line-height: 1.2;
+        }
+
+        @keyframes breatheGlow {
+            0% { text-shadow: 0 0 20px #2f5eff, 0 0 40px #1f3a8a; }
+            100% { text-shadow: 0 0 45px #6f9aff, 0 0 80px #2f4eb0; }
+        }
+
+        .help-header p {
+            font-size: 1.3rem;
+            color: #b4c8ff;
+            font-weight: 300;
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(10, 18, 35, 0.4);
+            backdrop-filter: blur(4px);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            display: inline-block;
+            border: 1px solid rgba(95, 142, 255, 0.3);
+            box-shadow: 0 0 30px rgba(95, 142, 255, 0.2);
+        }
+
+        .glow-separator {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #5f8eff, #b0ccff, #5f8eff, transparent);
+            width: 200px;
+            margin: 2rem auto;
+            filter: blur(2px);
+        }
+
+        /* Help Grid */
+        .help-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .help-card {
+            background: rgba(8, 14, 32, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(65, 105, 225, 0.3);
+            border-radius: 2rem;
+            padding: 2rem 1.8rem;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.3, 1);
+            box-shadow: 0 20px 30px -20px black, 0 0 0 1px rgba(95, 142, 255, 0.1) inset;
+        }
+
+        .help-card:hover {
+            border-color: #5f8eff;
+            box-shadow: 0 0 40px rgba(95, 142, 255, 0.4), 0 20px 40px -20px black;
+            transform: translateY(-6px);
+        }
+
+        .card-icon {
+            font-size: 2.8rem;
+            margin-bottom: 1.2rem;
+            filter: drop-shadow(0 0 15px #5f8eff);
+        }
+
+        .help-card h2 {
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: white;
+            margin-bottom: 1rem;
+            border-left: 4px solid #5f8eff;
+            padding-left: 1rem;
+        }
+
+        .help-card p {
+            color: #c6d6ff;
+            margin-bottom: 1.2rem;
+            font-weight: 300;
+        }
+
+        .help-card ul {
+            list-style: none;
+        }
+
+        .help-card li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #b0c4f0;
+        }
+
+        .help-card li::before {
+            content: '▹';
+            color: #5f8eff;
+            position: absolute;
+            left: 0;
+            filter: drop-shadow(0 0 5px #5f8eff);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            margin: 4rem 0 3rem;
+        }
+
+        .contact-section h2 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            text-align: center;
+            color: white;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 20px #2f4eb0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-item {
+            background: rgba(5, 10, 25, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(95, 142, 255, 0.3);
+            border-radius: 2rem;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            border-color: #5f8eff;
+            box-shadow: 0 0 40px rgba(95, 142, 255, 0.3);
+            transform: scale(1.02);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 20px #5f8eff);
+        }
+
+        .contact-item h3 {
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item p {
+            font-size: 1.2rem;
+            color: #b8d0ff;
+            font-weight: 300;
+            word-break: break-word;
+        }
+
+        .contact-item .highlight {
+            color: #5f8eff;
+            font-weight: 500;
+            text-shadow: 0 0 15px #5f8eff;
+        }
+
+        .contact-item a {
+            color: #b8d0ff;
+            text-decoration: none;
+            transition: 0.3s;
+            border-bottom: 1px solid transparent;
+        }
+
+        .contact-item a:hover {
+            color: white;
+            border-bottom-color: #5f8eff;
+            text-shadow: 0 0 15px #5f8eff;
+        }
+
+        /* Quick Help Bar */
+        .quick-help {
+            background: rgba(2, 5, 15, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(95, 142, 255, 0.2);
+            border-radius: 4rem;
+            padding: 1.2rem 2rem;
+            margin: 3rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .quick-help span {
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .quick-help a {
+            color: #b8d0ff;
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 2rem;
+            border: 1px solid rgba(95, 142, 255, 0.4);
+            transition: all 0.3s;
+            font-weight: 400;
+        }
+
+        .quick-help a:hover {
+            background: rgba(95, 142, 255, 0.15);
+            border-color: #5f8eff;
+            color: white;
+            box-shadow: 0 0 30px #5f8eff;
+        }
+
+        /* Footer */
+        .premium-footer {
+            margin-top: 4rem;
+            background: rgba(2, 5, 15, 0.9);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(95, 142, 255, 0.2);
+            padding: 2.5rem 2rem 1.5rem;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #ffffff, #b8d0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #b0c4f0;
+            text-decoration: none;
+            transition: all 0.3s;
+            border-bottom: 1px solid transparent;
+            font-weight: 300;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            border-bottom-color: #5f8eff;
+            text-shadow: 0 0 15px #5f8eff;
+        }
+
+        .copyright {
+            color: #7e92c0;
+            font-size: 0.95rem;
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(95, 142, 255, 0.15);
+        }
+
+        /* Responsive */
+        @media (max-width: 800px) {
+            .container { padding: 1.5rem; }
+            .help-header h1 { font-size: 2.5rem; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .quick-help { flex-direction: column; text-align: center; }
+            .footer-content { flex-direction: column; text-align: center; }
+        }
+
+        @media (min-width: 1600px) {
+            .container { max-width: 1400px; }
+            .help-card { padding: 2.5rem; }
+        }
+
+        /* TV Optimization */
+        @media (min-width: 2000px) {
+            html { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="help-wrapper">
+        <div class="container">
+            <!-- Header -->
+            <div class="help-header">
+                <h1>Need Help? We're Here for You!</h1>
+                <div class="glow-separator"></div>
+                <p>Your cinematic experience, our priority</p>
+            </div>
+
+            <!-- Help Cards Grid -->
+            <div class="help-grid">
+                <!-- 1. Streaming Support -->
+                <div class="help-card">
+                    <div class="card-icon">🎬</div>
+                    <h2>Streaming Support</h2>
+                    <p>Get the best playback experience:</p>
+                    <ul>
+                        <li>If a video doesn't load, try refreshing</li>
+                        <li>Multiple server options available</li>
+                        <li>Buffering? Switch to lower quality</li>
+                        <li>Clear browser cache if issues persist</li>
+                    </ul>
+                </div>
+
+                <!-- 2. Wishlist & Continue Watching -->
+                <div class="help-card">
+                    <div class="card-icon">❤️</div>
+                    <h2>Wishlist & Continue Watching</h2>
+                    <p>Track your favorites easily:</p>
+                    <ul>
+                        <li>Click ♥ on any movie to save to wishlist</li>
+                        <li>Progress saves automatically in your browser</li>
+                        <li>Continue watching picks up where you left off</li>
+                        <li>Wishlist stored locally on your device</li>
+                    </ul>
+                </div>
+
+                <!-- 3. Language & Quality Options -->
+                <div class="help-card">
+                    <div class="card-icon">🌐</div>
+                    <h2>Language & Quality</h2>
+                    <p>Customize your viewing:</p>
+                    <ul>
+                        <li>Select audio language from player (if available)</li>
+                        <li>Choose quality: Auto, 480p, 720p, 1080p</li>
+                        <li>Subtitles supported on most content</li>
+                        <li>Quality adjusts automatically to your speed</li>
+                    </ul>
+                </div>
+
+                <!-- 4. Technical Assistance for Devices -->
+                <div class="help-card">
+                    <div class="card-icon">📱</div>
+                    <h2>Technical Assistance</h2>
+                    <p>Optimized for all your devices:</p>
+                    <ul>
+                        <li>Mobile: iOS & Android – works in any browser</li>
+                        <li>Tablet: landscape recommended for best view</li>
+                        <li>Desktop: Chrome, Firefox, Safari, Edge</li>
+                        <li>LED TV: Use built-in browser for big screen</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Contact Info Section -->
+            <div class="contact-section">
+                <h2>📞 Direct Contact</h2>
+                <div class="contact-grid">
+                    <!-- Email -->
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <h3>Email Support</h3>
+                        <p><a href="mailto:help@lumiflix.cinema">help@lumiflix.cinema</a></p>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Response within 24 hours</p>
+                    </div>
+
+                    <!-- WhatsApp -->
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <h3>WhatsApp</h3>
+                        <p><span class="highlight">+1 (800) 555-0199</span></p>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Quick support, 9AM–11PM daily</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Help Bar -->
+            <div class="quick-help">
+                <span>⚡ Quick solutions:</span>
+                <a href="#">Video not playing?</a>
+                <a href="#">Wishlist missing?</a>
+                <a href="#">Quality issues?</a>
+                <a href="#">Device not supported?</a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="premium-footer">
+            <div class="footer-content">
+                <div class="footer-logo">LUMIFLIX</div>
+                <div class="footer-links">
+                    <a href="#">About Us</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">FAQs</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Terms</a>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2025 LumiFlix. All Rights Reserved. Crafted for cinema lovers.
+            </div>
+        </footer>
+    </div>
+
+    <!-- Smooth scroll behavior -->
+    <script>
+        (function() {
+            // Add smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // Subtle interactive console message
+            console.log('✨ LumiFlix Help Center — your cinematic companion');
+        })();
+    </script>
+</body>
+</html>
