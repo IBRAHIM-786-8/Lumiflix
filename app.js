@@ -1,68 +1,8 @@
 // LumiFlix - Main Application
-// Add this at the beginning of your constructor
-constructor() {
-    // Auto-detect backend URL (works on Vercel and local)
-    this.backendUrl = this.detectBackendUrl();
-    
-    // Rest of your existing constructor code...
-    // ... (keep all your existing code below)
-}
-
-// Add this new method
-detectBackendUrl() {
-    // Check if running on Vercel
-    if (window.location.hostname.includes('vercel.app')) {
-        // On Vercel, API is at the same domain with HTTPS
-        return '';
-    }
-    
-    // Local development
-    const hostname = window.location.hostname;
-    return `http://${hostname}:3005`;
-}
-
-// Replace your existing fetchWithBackend method
-async fetchWithBackend(endpoint) {
-    // On Vercel, use /api prefix, otherwise use full URL with port
-    const url = this.backendUrl 
-        ? `${this.backendUrl}${endpoint}`
-        : `/api${endpoint}`;
-    
-    try {
-        const response = await fetch(url);
-        return response;
-    } catch (error) {
-        console.error('Fetch error:', error);
-        throw error;
-    }
-}
-
-// Replace your checkBackendHealth method
-async checkBackendHealth() {
-    try {
-        const response = await this.fetchWithBackend('/health');
-        
-        if (response.ok) {
-            const data = await response.json();
-            console.log('Backend connected:', data);
-        } else {
-            console.warn('Backend not responding optimally');
-        }
-    } catch (error) {
-        console.warn('Backend not available - using TMDB only');
-        // Don't show error notification on Vercel
-        if (!window.location.hostname.includes('vercel.app')) {
-            this.showNotification('Backend connection failed. Make sure server.js is running on port 3005', 'warning');
-        }
-    }
-}
-
 class LumiFlix {
     constructor() {
-        // Auto-detect backend URL
-        const hostname = window.location.hostname;
-        this.backendPort = 3005;
-        this.backendUrl = `http://${hostname}:${this.backendPort}`;
+        // Auto-detect backend URL (works on Vercel and local)
+        this.backendUrl = this.detectBackendUrl();
         
         // ===== VERSION CONTROL =====
         // MANUALLY CHANGE THIS FOR MAJOR UPDATES THAT NEED CACHE CLEAR
@@ -116,6 +56,55 @@ class LumiFlix {
         this.cachedContent = this.loadCachedContent();
         
         this.init();
+    }
+    
+    // Add this new method to detect backend URL
+    detectBackendUrl() {
+        // Check if running on Vercel
+        if (window.location.hostname.includes('vercel.app')) {
+            // On Vercel, API is at the same domain with HTTPS
+            return '';
+        }
+        
+        // Local development
+        const hostname = window.location.hostname;
+        return `http://${hostname}:3005`;
+    }
+    
+    // Update fetchWithBackend method
+    async fetchWithBackend(endpoint) {
+        // On Vercel, use /api prefix, otherwise use full URL with port
+        const url = this.backendUrl 
+            ? `${this.backendUrl}${endpoint}`
+            : `/api${endpoint}`;
+        
+        try {
+            const response = await fetch(url);
+            return response;
+        } catch (error) {
+            console.error('Fetch error:', error);
+            throw error;
+        }
+    }
+    
+    // Update checkBackendHealth method
+    async checkBackendHealth() {
+        try {
+            const response = await this.fetchWithBackend('/health');
+            
+            if (response.ok) {
+                const data = await response.json();
+                console.log('Backend connected:', data);
+            } else {
+                console.warn('Backend not responding optimally');
+            }
+        } catch (error) {
+            console.warn('Backend not available - using TMDB only');
+            // Don't show error notification on Vercel
+            if (!window.location.hostname.includes('vercel.app')) {
+                this.showNotification('Backend connection failed. Make sure server.js is running on port 3005', 'warning');
+            }
+        }
     }
     
     // ============== AUTO-UPDATE FEATURE ==============
@@ -213,6 +202,7 @@ class LumiFlix {
             
         } catch (error) {
             // Silent fail for auto-update
+            console.log('Auto-update check failed:', error);
         }
     }
     
@@ -2244,16 +2234,20 @@ class LumiFlix {
     
     async checkBackendHealth() {
         try {
-            const response = await fetch(`${this.backendUrl}/health`);
+            const response = await this.fetchWithBackend('/health');
             
             if (response.ok) {
                 const data = await response.json();
-                // Silent success
+                console.log('Backend connected:', data);
             } else {
-                this.showNotification('Backend not responding. Make sure server.js is running on port 3005', 'warning');
+                console.warn('Backend not responding optimally');
             }
         } catch (error) {
-            this.showNotification('Backend connection failed. Run: node server.js', 'error');
+            console.warn('Backend not available - using TMDB only');
+            // Don't show error notification on Vercel
+            if (!window.location.hostname.includes('vercel.app')) {
+                this.showNotification('Backend connection failed. Make sure server.js is running on port 3005', 'warning');
+            }
         }
     }
     
@@ -2510,27 +2504,6 @@ class LumiFlix {
         }
     }
     
-    addWatermark() {
-        const container = document.querySelector('.video-container');
-        if (!container) return;
-        
-        // Check if watermark already exists
-        if (container.querySelector('.lumiflix-watermark')) return;
-        
-        const watermark = document.createElement('div');
-        watermark.className = 'lumiflix-watermark';
-        watermark.textContent = 'LUMIFLIX';
-        container.appendChild(watermark);
-        
-        // Add content info overlay
-        this.addEnhancedContentInfoOverlay(container);
-    }
-    
-    addContentInfoOverlay(container) {
-        // Use enhanced version instead
-        this.addEnhancedContentInfoOverlay(container);
-    }
-    
     updatePlayPauseIcon() {
         const playIcon = document.getElementById('playIcon');
         const pauseIcon = document.getElementById('pauseIcon');
@@ -2772,17 +2745,6 @@ class LumiFlix {
         if (nextIndex >= 0 && nextIndex < episodes.length) {
             const nextEpisode = episodes[nextIndex];
             this.playEpisode(this.currentMedia.id, nextEpisode.season, nextEpisode.episode);
-        }
-    }
-    
-    async fetchWithBackend(endpoint) {
-        const url = `${this.backendUrl}${endpoint}`;
-        
-        try {
-            const response = await fetch(url);
-            return response;
-        } catch (error) {
-            throw error;
         }
     }
     
@@ -4460,5 +4422,4 @@ window.handleImageError = function(img, title) {
     fallback.className = 'crew-image-fallback';
     fallback.textContent = title ? title.charAt(0).toUpperCase() : '?';
     img.parentNode.replaceChild(fallback, img);
-
 };
