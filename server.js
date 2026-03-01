@@ -13,6 +13,15 @@ app.use(express.json());
 // Serve static files
 app.use(express.static(__dirname));
 
+// Handle favicon requests
+app.get('/favicon.ico', (req, res) => {
+    res.status(204).end();
+});
+
+app.get('/favicon.png', (req, res) => {
+    res.status(204).end();
+});
+
 // Available extractors
 const extractors = {
     vixsrc: extractVixSrc
@@ -25,9 +34,11 @@ async function extractFromServers(params, serverNames) {
     for (const serverName of serverNames) {
         if (extractors[serverName]) {
             try {
+                console.log(`[Server] Extracting from ${serverName}...`);
                 const result = await extractors[serverName](params);
                 results.push(result);
             } catch (error) {
+                console.error(`[Server] Error extracting from ${serverName}:`, error.message);
                 results.push({
                     server: serverName,
                     streams: [],
@@ -45,6 +56,8 @@ app.get('/api/movie/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const { server = 'all' } = req.query;
+
+        console.log(`[API] Movie request: id=${id}, server=${server}`);
 
         if (!id) {
             return res.status(400).json({ error: 'Missing id parameter' });
@@ -85,10 +98,11 @@ app.get('/api/movie/:id', async (req, res) => {
         response.totalServersWithStreams = serversWithStreams;
         response.totalStreamsFound = results.reduce((acc, r) => acc + (r.streams || []).length, 0);
 
+        console.log(`[API] Movie response: ${response.totalStreamsFound} streams found`);
         return res.json(response);
 
     } catch (error) {
-        console.error('Movie endpoint error:', error);
+        console.error('[API] Movie endpoint error:', error);
         res.status(500).json({ error: 'Internal server error', details: error.message });
     }
 });
@@ -98,6 +112,8 @@ app.get('/api/tv/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const { season, episode, server = 'all' } = req.query;
+
+        console.log(`[API] TV request: id=${id}, season=${season}, episode=${episode}, server=${server}`);
 
         if (!id) {
             return res.status(400).json({ error: 'Missing id parameter' });
@@ -144,10 +160,11 @@ app.get('/api/tv/:id', async (req, res) => {
         response.totalServersWithStreams = serversWithStreams;
         response.totalStreamsFound = results.reduce((acc, r) => acc + (r.streams || []).length, 0);
 
+        console.log(`[API] TV response: ${response.totalStreamsFound} streams found`);
         return res.json(response);
 
     } catch (error) {
-        console.error('TV endpoint error:', error);
+        console.error('[API] TV endpoint error:', error);
         res.status(500).json({ error: 'Internal server error', details: error.message });
     }
 });
